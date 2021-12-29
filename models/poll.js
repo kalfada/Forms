@@ -3,8 +3,9 @@ const mongoose = require('mongoose')
 const answerSchema = new mongoose.Schema({
     answer: {
         id: {
-            type:String,
-            unique:true
+            type: String,
+            unique: true,
+            required: true
         },
         type: String,
         required: true
@@ -12,12 +13,33 @@ const answerSchema = new mongoose.Schema({
 })
 
 const questionSchema = new mongoose.Schema({
-    name: {},
-    questionType: {},
-    answersNum: {},
-    order: {},
-    isrequired: {},
-    image: {},
+    id: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    questionType: {
+        type: String,
+        enum: ['singleChoise', 'multipleChoise', 'linear', 'openQuestion'],
+        required: true
+    },
+    answersNum: {
+        type: Number,
+        required: true
+    },
+    order: {
+        type: Number
+    },
+    isRequired: {
+        type: Boolean
+    },
+    imageSource: {
+        type: String
+    },
     answers: [answerSchema]
 })
 
@@ -34,9 +56,18 @@ const pollSchema = new mongoose.Schema({
     author: {
         type: String
     },
-    designSettings: {},
-    shareLink: {},
-    question: {
+    designSettings: {
+        background: {
+            type: String
+        },
+        logo: {
+            type: String
+        }
+    },
+    shareLink: {
+        type: String
+    },
+    questions: {
         type: [questionSchema]
     }
 })

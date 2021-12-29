@@ -5,14 +5,14 @@ const schema = new mongoose.Schema({
     userID: {},
     pollStatus: {
         type: String,
-        enum: ['done']//need to add more
+        enum: ['start', 'in progress', 'done']//need to add more
     },
-    answers:[{
+    answers: [{
         questionID: {
-            type:String
+            type: String
         },
         answerID: {
-            type:Array
+            type: Array
         }
     }]
 })
