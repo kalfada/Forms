@@ -1,4 +1,14 @@
-const dotenv = require('dotenv')
+require('./db')
+const pollModel = require('./models/poll')
+const bcrypt = require('bcryptjs')
+const req = require('express/lib/request')
 
-dotenv.config()
-console.log(process.env);
+function read() {
+    return pollModel.find()
+}
+
+function create(info) {
+    return pollModel.create(info)
+}
+
+module.exports = { read, create }
