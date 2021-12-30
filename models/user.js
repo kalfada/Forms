@@ -1,40 +1,51 @@
-const { text: String } = require('body-parser')
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-    id: {
+    idNumber: {
         type: String,
         unique: true,
-        required: true
     },
     phone: {
         type: String
     },
-    name: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
         type: String,
         required: true
     },
     address: {
-        city:{
-            type:String
+        city: {
+            type: String
         },
-        street:{
-            type:String
+        street: {
+            type: String
         },
-        apartment:{
-            type:String
+        apartment: {
+            type: String
         },
-        zipCode:{
-            type:String
+        zipCode: {
+            type: String
         }
     },
     email: {
         type: String,
         unique: true
     },
-    education: {
-        type:Array
-    },
+    education: [
+        {
+            name: {
+                type: String
+            },
+            years: {
+                type: Number
+            },
+            eduType: {
+                type: String
+            }
+        }],
     maritalStatus: {
         type: String,
         enum: ['Single', 'married', 'widowed', 'divorced']
@@ -43,12 +54,11 @@ const schema = new mongoose.Schema({
         type: Date,
     },
     sectoralAffiliation: {
-        type: String,
-        enum: ['arabic', 'religious', 'ortodox']//need to add more
+        type: String
     },
     gender: {
         type: String,
-        enum: ['male', 'female', 'other']
+        enum: ['male', 'female']
     },
     permissions: {
         type: String,

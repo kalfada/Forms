@@ -1,12 +1,13 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const answerSchema = new mongoose.Schema({
+
+    id: {
+        type: String,
+        unique: true,
+        required: true
+    },
     answer: {
-        id: {
-            type: String,
-            unique: true,
-            required: true
-        },
         type: String,
         required: true
     }
@@ -69,6 +70,10 @@ const pollSchema = new mongoose.Schema({
     },
     questions: {
         type: [questionSchema]
+    },
+    isTemplate : {
+        type:Boolean,
+        default:false
     }
 })
 

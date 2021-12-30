@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { stringify } = require('querystring')
 
 const activitiesSchema = new mongoose.Schema({
     name: {
@@ -11,9 +10,7 @@ const activitiesSchema = new mongoose.Schema({
     endDate: {
         type: Date
     },
-    tags: {
-        type: Array
-    }
+    tags: [String]
 })
 
 const institutionSchema = new mongoose.Schema({
@@ -42,9 +39,8 @@ const institutionSchema = new mongoose.Schema({
             type: String
         }
     },
-    activities: {
-        type: [activitiesSchema]
-    }
+    activities: [activitiesSchema]
+
 })
 
 module.exports = mongoose.model('institution', institutionSchema)

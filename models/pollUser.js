@@ -1,20 +1,24 @@
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-    pollID: {},
-    userID: {},
+    pollID: {
+        type: mongoose.SchemaTypes.ObjectId
+    },
+    userID: {
+        type: mongoose.SchemaTypes.ObjectId
+    },
     pollStatus: {
         type: String,
-        enum: ['start', 'in progress', 'done']//need to add more
+        enum: ['start', 'in progress', 'done'],
+        default: 'start'
     },
-    answers: [{
-        questionID: {
-            type: String
-        },
-        answerID: {
-            type: Array
-        }
-    }]
+    answers: [
+        {
+            questionID: {
+                type: mongoose.SchemaTypes.ObjectId
+            },
+            answerID:[mongoose.SchemaTypes.ObjectId]
+        }]
 })
 
 module.exports = mongoose.model('pollUser', schema)
