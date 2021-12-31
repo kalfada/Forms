@@ -9,11 +9,11 @@ function create(newInstitution) {
     return institutionModel.create(newInstitution)
 }
 
-function update(id, updatedInstitution) {
+function update({ id }, updatedInstitution) {
     return institutionModel.findByIdAndUpdate(id, updatedInstitution, { new: true })
 }
 
-function del(id) {
+function del({ id }) {
     return institutionModel.findByIdAndDelete(id)
 }
 
