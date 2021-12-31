@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({
             questionID: {
                 type: mongoose.SchemaTypes.ObjectId
             },
-            answerID:[mongoose.SchemaTypes.ObjectId]
+            answerID: [mongoose.SchemaTypes.ObjectId]
         }]
 })
 

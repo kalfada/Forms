@@ -1,4 +1,4 @@
-const {polls, users} = require('./index')
+const {polls, users, pollusers, institutions} = require('./index')
 
 module.exports = app => {
 
@@ -32,7 +32,6 @@ module.exports = app => {
         }
     }),
 
-
     //user CRUD
     app.get('/users', async (req, res) => {
         try {
@@ -58,6 +57,66 @@ module.exports = app => {
     app.delete('/users', async (req, res) => {
         try {
             res.send(await users.delete(req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+
+    //polluser CRUD
+    app.get('/pollusers', async (req, res) => {
+        try {
+            res.send(await pollusers.read())
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+    app.post('/pollusers', async (req, res) => {
+        try {
+            res.send(await pollusers.create(req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+    app.put('/pollusers/:id', async (req, res) => {
+        try {
+            res.send(await pollusers.update(req.params, req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+    app.delete('/pollusers', async (req, res) => {
+        try {
+            res.send(await pollusers.delete(req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+
+    //institutions CRUD
+    app.get('/institutions', async (req, res) => {
+        try {
+            res.send(await institutions.read())
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+    app.post('/institutions', async (req, res) => {
+        try {
+            res.send(await institutions.create(req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+    app.put('/institutions/:id', async (req, res) => {
+        try {
+            res.send(await institutions.update(req.params, req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+    app.delete('/institutions', async (req, res) => {
+        try {
+            res.send(await institutions.delete(req.body))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
