@@ -9,12 +9,12 @@ function create(newInstitution) {
     return institutionModel.create(newInstitution)
 }
 
-function update(id) {
-
+function update(id, updatedInstitution) {
+    return institutionModel.findByIdAndUpdate(id, updatedInstitution, { new: true })
 }
 
 function del(id) {
-
+    return institutionModel.findByIdAndDelete(id)
 }
 
 module.exports = { create, read, update, delete: del }

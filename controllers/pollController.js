@@ -1,5 +1,4 @@
 const pollModel = require('../models/poll')
-const bcrypt = require('bcryptjs')
 
 function read(filter) {
     return pollModel.find(filter)
@@ -10,12 +9,12 @@ function create(newPoll) {
     return pollModel.create(newPoll)
 }
 
-function update(id) {
-
+function update({id}, updatedPoll) {
+    return pollModel.findByIdAndUpdate(id, updatedPoll, { new: true })
 }
 
-function del(id) {
-
+function del({id}) {
+    return pollModel.findByIdAndDelete(id)
 }
 
 module.exports = { create, read, update, delete: del }
