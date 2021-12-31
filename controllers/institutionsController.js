@@ -1,5 +1,4 @@
 const institutionModel = require('../models/institution')
-const bcrypt = require('bcryptjs')
 
 function read(filter) {
     return institutionModel.find(filter)
