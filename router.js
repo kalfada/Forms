@@ -61,6 +61,13 @@ module.exports = app => {
             res.send({ code: 400, message: err.message || err })
         }
     }),
+    app.post('/users/login', async (req, res) => {
+        try {
+            res.send(await users.login(req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
 
     //polluser CRUD
     app.get('/pollusers', async (req, res) => {
