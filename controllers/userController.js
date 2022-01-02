@@ -19,4 +19,15 @@ function del({ id }) {
     return userModel.findByIdAndDelete(id)
 }
 
-module.exports = { create, read, update, delete: del }
+async function login({ email, pass }) {
+    const user = await userModel.findOne({ email }, '+password')
+
+    if (!user) throw 'no such user'
+
+    if (!bcrypt.compareSync(pass, user.password))
+        throw 'email or password does not match'
+
+    return read({ _id: user.id })
+}
+
+module.exports = { create, read, update, delete: del, login }

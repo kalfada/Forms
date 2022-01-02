@@ -24,9 +24,9 @@ module.exports = app => {
             res.send({ code: 400, message: err.message || err })
         }
     }),
-    app.delete('/polls', async (req, res) => {
+    app.delete('/polls/:id', async (req, res) => {
         try {
-            res.send(await polls.delete(req.body))
+            res.send(await polls.delete(req.params))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
@@ -54,9 +54,16 @@ module.exports = app => {
             res.send({ code: 400, message: err.message || err })
         }
     }),
-    app.delete('/users', async (req, res) => {
+    app.delete('/users/:id', async (req, res) => {
         try {
-            res.send(await users.delete(req.body))
+            res.send(await users.delete(req.params))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    }),
+    app.post('/users/login', async (req, res) => {
+        try {
+            res.send(await users.login(req.body))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
@@ -84,9 +91,9 @@ module.exports = app => {
             res.send({ code: 400, message: err.message || err })
         }
     }),
-    app.delete('/pollusers', async (req, res) => {
+    app.delete('/pollusers/:id', async (req, res) => {
         try {
-            res.send(await pollusers.delete(req.body))
+            res.send(await pollusers.delete(req.params))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
@@ -114,9 +121,9 @@ module.exports = app => {
             res.send({ code: 400, message: err.message || err })
         }
     }),
-    app.delete('/institutions', async (req, res) => {
+    app.delete('/institutions/:id', async (req, res) => {
         try {
-            res.send(await institutions.delete(req.body))
+            res.send(await institutions.delete(req.params))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
