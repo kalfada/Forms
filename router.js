@@ -1,11 +1,11 @@
-const {polls, users, pollusers, institutions} = require('./index')
+const {polls, users, pollUsers, institutions} = require('./index')
 
 module.exports = app => {
 
     //poll CRUD
     app.get('/polls', async (req, res) => {
         try {
-            res.send(await polls.read())
+            res.send(await polls.read(req.query))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
@@ -35,7 +35,7 @@ module.exports = app => {
     //user CRUD
     app.get('/users', async (req, res) => {
         try {
-            res.send(await users.read())
+            res.send(await users.read(req.query))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
@@ -72,28 +72,28 @@ module.exports = app => {
     //polluser CRUD
     app.get('/pollusers', async (req, res) => {
         try {
-            res.send(await pollusers.read())
+            res.send(await pollUsers.read(req.query))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
     }),
     app.post('/pollusers', async (req, res) => {
         try {
-            res.send(await pollusers.create(req.body))
+            res.send(await pollUsers.create(req.body))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
     }),
     app.put('/pollusers/:id', async (req, res) => {
         try {
-            res.send(await pollusers.update(req.params, req.body))
+            res.send(await pollUsers.update(req.params, req.body))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
     }),
     app.delete('/pollusers/:id', async (req, res) => {
         try {
-            res.send(await pollusers.delete(req.params))
+            res.send(await pollUsers.delete(req.params))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
@@ -102,7 +102,7 @@ module.exports = app => {
     //institutions CRUD
     app.get('/institutions', async (req, res) => {
         try {
-            res.send(await institutions.read())
+            res.send(await institutions.read(req.query))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }
