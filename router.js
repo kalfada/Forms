@@ -1,4 +1,4 @@
-const {polls, users, pollUsers, institutions} = require('./index')
+const {polls, users, pollUsers, institutions, generic} = require('./index')
 
 module.exports = app => {
 
@@ -156,5 +156,12 @@ module.exports = app => {
             res.send({ code: 400, message: err.message || err })
         }
     })
-
+    //generic Get
+    app.get('/uniquePoll', async (req, res)=>{
+        try {
+            res.send(await generic.createUniquePoll(req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
+        }
+    })
 }
