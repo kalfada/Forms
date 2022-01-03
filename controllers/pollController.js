@@ -4,17 +4,21 @@ function read(filter) {
     return pollModel.find(filter)
 }
 
+function readOne({ id }) {
+    return pollModel.findOne(id)
+}
+
 function create(newPoll) {
     newPoll.creationDate = Date.now()
     return pollModel.create(newPoll)
 }
 
-function update({id}, updatedPoll) {
+function update({ id }, updatedPoll) {
     return pollModel.findByIdAndUpdate(id, updatedPoll, { new: true })
 }
 
-function del({id}) {
+function del({ id }) {
     return pollModel.findByIdAndDelete(id)
 }
 
-module.exports = { create, read, update, delete: del }
+module.exports = { create, read, readOne, update, delete: del }

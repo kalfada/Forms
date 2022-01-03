@@ -4,6 +4,10 @@ function read(filter) {
     return institutionModel.find(filter)
 }
 
+function readOne({ id }) {
+    return institutionModel.findOne(id)
+}
+
 function create(newInstitution) {
     newInstitution.creationDate = Date.now()
     return institutionModel.create(newInstitution)
@@ -17,4 +21,4 @@ function del({ id }) {
     return institutionModel.findByIdAndDelete(id)
 }
 
-module.exports = { create, read, update, delete: del }
+module.exports = { create, read, readOne, update, delete: del }

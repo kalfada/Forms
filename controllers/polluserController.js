@@ -4,6 +4,11 @@ function read(filter) {
     return pollUserModel.find(filter)
 }
 
+function readOne(filter) {
+    return pollUserModel.findOne(filter)
+}
+
+
 function create(newUser) {
     return pollUserModel.create(newUser)
 }
@@ -16,4 +21,4 @@ function del({ id }) {
     return pollUserModel.findByIdAndDelete(id)
 }
 
-module.exports = { create, read, update, delete: del }
+module.exports = { create, read, readOne, update, delete: del }

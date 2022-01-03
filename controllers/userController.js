@@ -5,6 +5,10 @@ function read(filter) {
     return userModel.find(filter)
 }
 
+function readOne({ id }) {
+    return userModel.findOne(id)
+}
+
 function create(newUser) {
     newUser.creationDate = Date.now()
     newUser.password = bcrypt.hashSync(newUser.password)
@@ -30,4 +34,4 @@ async function login({ email, pass }) {
     return read({ _id: user.id })
 }
 
-module.exports = { create, read, update, delete: del, login }
+module.exports = { create, read, readOne, update, delete: del, login }
