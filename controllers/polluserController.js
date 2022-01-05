@@ -5,7 +5,7 @@ function read(filter) {
 }
 
 function readOne(filter) {
-    return pollUserModel.findOne(filter)
+    return pollUserModel.findOne(filter).lean()
 }
 
 

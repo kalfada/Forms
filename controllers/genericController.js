@@ -13,8 +13,9 @@ async function createUniquePoll({ userID, pollID }) {
             if (tmp)
                 newAnswers.push(tmp.answer)
         }
-        poll.questions[index].answers = []
-        poll.questions[index].answers.push(...newAnswers)
+        poll.questions[index].answers = [...newAnswers]
+        // poll.questions[index].answers.push()
+        console.log(newAnswers,poll.questions[index].answers);
     }
     return poll
 }
