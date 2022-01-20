@@ -5,7 +5,7 @@ function read(filter) {
 }
 
 function readOne({ id }) {
-    return pollModel.findOne(id).lean()
+    return pollModel.findOne({_id: id}).lean()
 }
 
 function create(newPoll) {
