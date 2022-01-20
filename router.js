@@ -12,7 +12,7 @@ module.exports = app => {
     }),
     app.get('/polls/:id', async (req, res) => {
         try {
-            res.send(await polls.read(req.params))
+            res.send(await polls.readOne(req.params))
         } catch (err) {
             res.send({ code: 400, message: err.message || err })
         }

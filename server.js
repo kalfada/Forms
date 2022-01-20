@@ -5,6 +5,7 @@ const
     router = require('./router')
 
 app.use(express.json())
+app.use(require('cors')())
 
 router(app)
 
